@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="Controls" type="Node2D"]
+
+[node name="Score" type="Label" parent="."]
+offset_left = 10.1021
+offset_top = 8.97969
+offset_right = 59.1021
+offset_bottom = 22.9797
+text = "Score: ?"
+__meta__ = {
+"_edit_use_anchors_": false
+}

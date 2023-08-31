@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://characters/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ciel_etoiles.png" type="Texture2D" id=2]
+[ext_resource path="res://characters/ennemy/EnemySpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World.gd" type="Script" id=4]
+
+[node name="World" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Bg" type="Sprite2D" parent="."]
+
+[node name="ciel_etoiles" type="Sprite2D" parent="."]
+position = Vector2( 5.26169, 1.9357 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 540, 960 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 245.795, 866.641 )
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 3 )]
+
+[node name="Score" type="Label" parent="."]
+offset_left = 16.1022
+offset_top = 16.0
+offset_right = 112.102
+offset_bottom = 31.0
+text = "SCORE: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="Label" parent="."]
+offset_left = 14.5796
+offset_top = 31.1591
+offset_right = 70.5796
+offset_bottom = 52.1591
+text = "HEALTH: ?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Munitions" type="Label" parent="."]
+offset_left = 14.7157
+offset_top = 50.0333
+offset_right = 54.7157
+offset_bottom = 64.0333
+text = "Munitions: ?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="injury" from="Player" to="." method="injury"]
+[connection signal="load_munitions" from="Player" to="." method="_on_Player_load_munitions"]
+[connection signal="spawn_laser" from="Player" to="." method="_on_Player_spawn_laser"]
+[connection signal="add_score" from="EnemySpawner" to="." method="add_score"]
+[connection signal="add_score" from="EnemySpawner" to="." method="score"]

@@ -1,0 +1,3 @@
+res://default_env.tres
+res://Main/MainPanel.tscn
+res://projectiles/PlayerLaser.gd
